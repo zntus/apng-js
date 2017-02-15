@@ -134,4 +134,14 @@ export default class extends EventEmitter {
         this.context.clearRect(0, 0, this._apng.width, this._apng.height);
         this.renderNextFrame();
     }
+    
+    end() {
+        this.emit('end');
+        this._numPlays = 0;
+        this._ended = true;
+        this._paused = false;
+        // render first frame
+        this._currentFrameNumber = -1;
+        this.context.clearRect(0, 0, this._apng.width, this._apng.height);
+    }
 }
