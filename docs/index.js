@@ -427,8 +427,8 @@
 	});
 
 	exports.default = function (bytes) {
-	    var start = arguments.length <= 1 || arguments[1] === undefined ? 0 : arguments[1];
-	    var length = arguments.length <= 2 || arguments[2] === undefined ? bytes.length - start : arguments[2];
+	    var start = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 0;
+	    var length = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : bytes.length - start;
 
 	    var crc = -1;
 	    for (var _i = start, l = start + length; _i < l; _i++) {
@@ -530,7 +530,7 @@
 	        value: function getPlayer(context) {
 	            var _this = this;
 
-	            var autoPlay = arguments.length <= 1 || arguments[1] === undefined ? false : arguments[1];
+	            var autoPlay = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : false;
 
 	            return this.createImages().then(function () {
 	                return new _player2.default(_this, context, autoPlay);
@@ -764,6 +764,17 @@
 	            this._currentFrameNumber = -1;
 	            this.context.clearRect(0, 0, this._apng.width, this._apng.height);
 	            this.renderNextFrame();
+	        }
+	    }, {
+	        key: 'end',
+	        value: function end() {
+	            this.emit('end');
+	            this._numPlays = 0;
+	            this._ended = true;
+	            this._paused = false;
+	            // render first frame
+	            this._currentFrameNumber = -1;
+	            this.context.clearRect(0, 0, this._apng.width, this._apng.height);
 	        }
 	    }, {
 	        key: 'currentFrameNumber',
