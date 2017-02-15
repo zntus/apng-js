@@ -1,9 +1,9 @@
 {
   "name": "apng-js",
-  "version": "1.0.3",
+  "version": "1.0.5",
   "description": "Parse and play animated PNG (APNG)",
-  "homepage": "https://github.com/davidmz/apng-js",
-  "repository": "davidmz/apng-js",
+  "homepage": "https://github.com/zntus/apng-js",
+  "repository": "zntus/apng-js",
   "main": "lib/index.js",
   "scripts": {
     "build": "node_modules/.bin/webpack",
