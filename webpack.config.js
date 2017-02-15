@@ -23,7 +23,7 @@ module.exports = [
     {
         entry: path.join(__dirname, "src", "demo-page", "index.js"),
         output: {
-            path: path.join(__dirname, "docs"),
+            path: path.join(__dirname, "lib"),
             filename: "index.js"
         },
         module: {
